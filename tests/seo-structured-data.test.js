@@ -15,6 +15,22 @@ function jsonLdScripts(html) {
   });
 }
 
+test("FAQ exposes the preschool potty-training fee policy", function () {
+  var html = fs.readFileSync(path.join(repositoryRoot, "faq.html"), "utf8");
+  var schema = jsonLdScripts(html).find(function (item) { return item["@type"] === "FAQPage"; });
+  var question = schema.mainEntity.find(function (item) {
+    return item.name === "Does my child need to be potty trained?";
+  });
+
+  assert.ok(question, "potty-training question is present in FAQ schema");
+  assert.match(question.acceptedAnswer.text, /\$50 monthly fee applies for half-day children/);
+  assert.match(question.acceptedAnswer.text, /\$100 monthly fee applies for full-day children/);
+  assert.match(question.acceptedAnswer.text, /Parents supply pull-ups \(no diapers\), baby wipes, and plastic bags/);
+  assert.equal((html.match(/Does my child need to be potty trained\?/g) || []).length, 2);
+  assert.match(html, /<strong>\$50 monthly fee<\/strong> applies for half-day children/);
+  assert.match(html, /<strong>\$100 monthly fee<\/strong> applies for full-day children/);
+});
+
 test("preschool page exposes one coherent local entity", function () {
   var html = fs.readFileSync(path.join(repositoryRoot, "preschool.html"), "utf8");
   var homeHtml = fs.readFileSync(path.join(repositoryRoot, "index.html"), "utf8");
