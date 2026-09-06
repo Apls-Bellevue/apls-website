@@ -364,7 +364,7 @@ window.APLS_TUITION = {
         "preschool"
       ],
       "label": "Non-potty-trained children.",
-      "text": " No additional fee applies. We provide teaching assistants for toileting help. Parents supply pull-ups (no diapers), baby wipes, and plastic bags."
+      "text": "$50/month for half day children and $100/month for full day children. We provide teaching assistants for toileting help. Parents supply pull-ups (no diapers), baby wipes, and plastic bags."
     },
     {
       "appliesTo": [
