@@ -585,6 +585,7 @@ a.program h3 { color: var(--navy); }
 .prog-meta .langs { display: inline-block; border: 1.5px solid var(--blue); color: var(--blue); font-size: .82rem; font-weight: 700; padding: .2em .8em; border-radius: 999px; }
 .prog-highlights { margin: 0 0 1.4rem; padding-left: 1.2rem; }
 .prog-highlights li { font-size: 1.05rem; margin-bottom: .4rem; }
+.program-schedule-summary { white-space: pre-line; }
 .camp-theme-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .25rem 2rem; }
 .program-detail .btn { display: inline-block; }
 

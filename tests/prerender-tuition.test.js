@@ -73,6 +73,9 @@ test("prerendered pages expose canonical tuition without JavaScript", function (
   assert.match(saturday, /Fall 2026 Saturday School tuition/);
   assert.match(saturday, /New-student application fee/);
   assert.doesNotMatch(saturday, /Extended care/);
+  var saturdayPage = read(root, "saturday-school.html");
+  assert.equal((saturdayPage.match(/data-program-schedule="saturday-school"/g) || []).length, 2);
+  assert.doesNotMatch(saturdayPage, /Fall classes run Saturdays from 9:30/);
 
   var apPrep = generatedRegion(read(root, "ap-prep.html"), generator.CONTENT_START, generator.CONTENT_END);
   assert.match(apPrep, /Contact for tuition/);
