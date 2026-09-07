@@ -8,7 +8,7 @@ database_name = "apls-content-studio"
 database_id = "624c6064-ef4a-4d61-bc98-9821629be821"
 
 [vars]
-GITHUB_OWNER = "parryying"
+GITHUB_OWNER = "Apls-Bellevue"
 GITHUB_REPO = "apls-website"
 GITHUB_BASE_BRANCH = "main"
 CMS_ORIGIN = "https://apls-content-studio.pages.dev"

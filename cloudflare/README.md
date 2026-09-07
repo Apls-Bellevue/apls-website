@@ -118,7 +118,7 @@ message rather than the exit code.
 
 ## 3. GitHub App
 
-Create a GitHub App installed only on `parryying/apls-website` with:
+Create a GitHub App installed only on `Apls-Bellevue/apls-website` with:
 
 - Metadata: read
 - Contents: read and write
