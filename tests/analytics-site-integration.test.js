@@ -25,7 +25,7 @@ test("every public sitemap page ships the consent-gated analytics controller", f
   pages.forEach(function (page) {
     var html = fs.readFileSync(path.join(repositoryRoot, page), "utf8");
     assert.match(html, /<script src="js\/analytics\.js\?v=1"><\/script>/, page + " loads analytics consent");
-    assert.match(html, /<link rel="stylesheet" href="css\/styles\.css\?v=23" \/>/, page + " loads consent styles");
+    assert.match(html, /<link rel="stylesheet" href="css\/styles\.css\?v=24" \/>/, page + " loads consent styles");
   });
 });
 
@@ -40,6 +40,8 @@ test("deployment package contains the privacy notice and analytics controller", 
 
   assert.equal(result.status, 0, result.stderr);
   assert.equal(fs.existsSync(path.join(destination, "privacy.html")), true);
+  assert.equal(fs.existsSync(path.join(destination, "chinese.html")), true);
+  assert.equal(fs.existsSync(path.join(destination, "spanish.html")), true);
   assert.equal(fs.existsSync(path.join(destination, "js", "analytics.js")), true);
 });
 

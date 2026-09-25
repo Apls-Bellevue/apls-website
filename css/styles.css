@@ -116,6 +116,22 @@ a:hover { text-decoration: underline; }
 .utility-inner { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: flex-end; padding: 6px 20px; }
 .utility-item { color: #e7efe9; white-space: nowrap; }
 .utility-item:hover { color: #fff; text-decoration: none; }
+.language-selector { position: relative; }
+.language-selector summary { cursor: pointer; list-style: none; }
+.language-selector summary::-webkit-details-marker { display: none; }
+.language-selector summary::after {
+  content: ""; display: inline-block; width: .42rem; height: .42rem; margin: 0 0 .18rem .5rem;
+  border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg);
+}
+.language-selector[open] summary::after { margin-bottom: -.05rem; transform: rotate(225deg); }
+.language-menu {
+  position: absolute; z-index: 80; top: calc(100% + 6px); right: 0; display: flex; flex-direction: column;
+  min-width: 155px; padding: .35rem 0; background: var(--white); border-radius: 8px;
+  box-shadow: 0 10px 24px rgba(20, 38, 63, .22);
+}
+.language-menu a { padding: .55rem 1rem; color: var(--navy); font-weight: 700; white-space: nowrap; }
+.language-menu a:hover { color: var(--blue); background: var(--cream); text-decoration: none; }
+.language-menu a[aria-current="page"] { color: var(--coral-text); }
 
 /* ---------- Header ---------- */
 .site-header { position: sticky; top: 0; z-index: 50; background: var(--white); box-shadow: 0 2px 12px rgba(31,58,95,.07); }

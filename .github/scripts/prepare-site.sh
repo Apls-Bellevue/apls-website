@@ -9,6 +9,7 @@ pages=(
   ap-prep.html
   calendar-print.html
   calendar.html
+  chinese.html
   contact.html
   enrollment-process.html
   enrollment.html
@@ -23,6 +24,7 @@ pages=(
   privacy.html
   programs.html
   saturday-school.html
+  spanish.html
   summer-camp.html
   tour.html
   tuition.html
