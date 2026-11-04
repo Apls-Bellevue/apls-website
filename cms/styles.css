@@ -1086,10 +1086,11 @@ h3 {
 }
 
 .class-schedule-table {
-  width: 100%;
-  min-width: 680px;
+  /* Let additional months expand horizontally rather than compressing date cells. */
+  width: max-content;
+  min-width: 100%;
   border-collapse: collapse;
-  table-layout: fixed;
+  table-layout: auto;
   font-size: 0.78rem;
 }
 
@@ -1103,7 +1104,12 @@ h3 {
 }
 
 .class-schedule-table tr > :first-child {
+  min-width: 180px;
   width: 180px;
+}
+
+.class-schedule-table tr > :not(:first-child) {
+  min-width: 150px;
 }
 
 .class-schedule-table tr > :last-child {
