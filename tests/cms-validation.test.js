@@ -38,9 +38,16 @@ test("current canonical CMS data passes shared validation", function () {
 
 test("incorrect per-class tuition is rejected", function () {
   var data = loadData();
-  data.tuition.programs["after-school"].rows[0][1] = "$1,400 (26 classes)";
+  var program = data.tuition.programs["after-school"];
+  var classCount = program.classDates[0].length;
+  var expectedTotal = classCount * Number(program.ratePerClass);
+  // Make the amount incorrect without assuming a particular school term or class count.
+  program.rows[0][1] = "$" + (expectedTotal - 1).toLocaleString("en-US") + " (" + classCount + " classes)";
   var result = validation.validateAll(data, { today: "2026-08-21" });
-  assert.match(result.programs["after-school"].errors.join("\n"), /should total \$1,430/);
+  assert.ok(
+    result.programs["after-school"].errors.join("\n").includes("should total $" + expectedTotal.toLocaleString("en-US")),
+    "Expected tuition validation to reject an incorrect total for the current schedule"
+  );
 });
 
 test("reversed calendar ranges are rejected", function () {
