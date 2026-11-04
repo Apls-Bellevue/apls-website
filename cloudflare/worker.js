@@ -285,7 +285,10 @@ async function route(request, env) {
     var row = await env.DB.prepare("SELECT branch, pr_number, head_sha, status, updated_at FROM submissions WHERE editor_email = ? ORDER BY id DESC LIMIT 1").bind(identity.email).first();
     if (!row) return json({ submission: null }, 200, request, env);
     var pull = await github(env, "/pulls/" + row.pr_number);
-    var checks = await github(env, "/commits/" + row.head_sha + "/check-runs");
+    // Review branches can receive additional commits (for example, to rerun validation).
+    // Always use the PR's current head rather than the SHA saved at initial submission.
+    var currentHeadSha = pull.head && pull.head.sha ? pull.head.sha : row.head_sha;
+    var checks = await github(env, "/commits/" + currentHeadSha + "/check-runs");
     var checkRuns = checks.check_runs || [];
     var status = pull.merged_at ? "merged" : pull.state === "closed" ? "closed" : !checkRuns.length || checkRuns.some(function (check) { return check.status !== "completed"; }) ? "checks-running" : checkRuns.some(function (check) { return check.conclusion !== "success" && check.conclusion !== "skipped"; }) ? "checks-failed" : "staging-ready";
     // The draft is kept while a submission is open so a refresh can restore it; clear it once resolved.
@@ -293,7 +296,7 @@ async function route(request, env) {
       await env.DB.prepare("DELETE FROM drafts WHERE editor_email = ?").bind(identity.email).run();
     }
     var issues = status === "checks-failed" ? await submissionIssues(env, row.pr_number) : [];
-    return json({ submission: { branch: row.branch, prNumber: row.pr_number, headSha: row.head_sha, status: status, url: pull.html_url, updatedAt: row.updated_at, issues: issues } }, 200, request, env);
+    return json({ submission: { branch: row.branch, prNumber: row.pr_number, headSha: currentHeadSha, status: status, url: pull.html_url, updatedAt: row.updated_at, issues: issues } }, 200, request, env);
   }
   return json({ error: "Not found" }, 404, request, env);
 }
