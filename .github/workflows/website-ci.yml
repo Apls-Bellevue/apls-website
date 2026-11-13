@@ -1,0 +1,36 @@
+name: Website CI
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "after-school.html"
+      - "saturday-school.html"
+      - "js/apls-render.js"
+      - "scripts/**"
+      - "tests/**"
+      - "data/**"
+      - ".github/workflows/website-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: JavaScript syntax
+        run: |
+          node --check js/apls-render.js
+          node --check scripts/prerender-tuition.js
+      - name: Validate CMS data
+        run: npm run validate:cms
+      - name: Run prerender tests
+        run: npm run test:prerender
+      - name: Run CMS tests
+        run: npm run test:cms
