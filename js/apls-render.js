@@ -224,6 +224,11 @@
       if (program && program.term) element.textContent = program.term;
     });
 
+    document.querySelectorAll("[data-program-season]").forEach(function (element) {
+      var program = programs[element.getAttribute("data-program-season")];
+      if (program && program.term) element.textContent = program.term.split(/\s+/)[0];
+    });
+
     document.querySelectorAll("[data-program-term-heading]").forEach(function (element) {
       var program = programs[element.getAttribute("data-program-term-heading")];
       if (program && program.term) element.textContent = program.name + " " + program.term + " schedule";
