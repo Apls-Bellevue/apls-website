@@ -60,6 +60,19 @@ function tuitionHeading(program) {
   return heading;
 }
 
+function displayTuitionRows(program) {
+  return (program.rows || []).map(function (row) {
+    return row.map(function (cell, index) {
+      if (index !== 0 || !/^(Fall|Spring|Summer|Winter) Quarter(?:\\s*\\([^)]*\\))?$/i.test(String(cell))) return cell;
+      if (!program.term || !program.startDate || !program.endDate) return cell;
+      var months = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."];
+      var from = months[Number(program.startDate.slice(5, 7)) - 1];
+      var to = months[Number(program.endDate.slice(5, 7)) - 1];
+      return from && to ? program.term + " (" + from + "–" + to + ")" : program.term;
+    });
+  });
+}
+
 function renderTable(columns, rows) {
   var lines = [
     '<table class="schedule-table tuition-table">',
@@ -93,7 +106,7 @@ function renderProgram(program, feesHeading, fees) {
   if (program.note) lines.push('<p class="program-tuition-note">' + escapeHtml(program.note) + "</p>");
 
   var hasTable = (program.columns || []).length && (program.rows || []).length;
-  if (hasTable) lines.push(renderTable(program.columns, program.rows));
+  if (hasTable) lines.push(renderTable(program.columns, displayTuitionRows(program)));
   if (fees.length) {
     lines.push("<h2>" + escapeHtml(feesHeading || "Registration & other fees") + "</h2>");
     lines.push(renderFees(fees));
@@ -120,7 +133,7 @@ function renderFullTuition(data) {
     lines.push("<h2>" + escapeHtml(tuitionHeading(program)) + "</h2>");
     if (program.note) lines.push("<p>" + escapeHtml(program.note) + "</p>");
     if ((program.columns || []).length && (program.rows || []).length) {
-      lines.push(renderTable(program.columns, program.rows));
+      lines.push(renderTable(program.columns, displayTuitionRows(program)));
     }
   });
   if ((data.fees || []).length) {
