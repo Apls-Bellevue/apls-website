@@ -63,7 +63,7 @@ function tuitionHeading(program) {
 function displayTuitionRows(program) {
   return (program.rows || []).map(function (row) {
     return row.map(function (cell, index) {
-      if (index !== 0 || !/^(Fall|Spring|Summer|Winter) Quarter(?:\\s*\\([^)]*\\))?$/i.test(String(cell))) return cell;
+      if (index !== 0 || !/^(Fall|Spring|Summer|Winter) Quarter(?:\s*\([^)]*\))?$/i.test(String(cell))) return cell;
       if (!program.term || !program.startDate || !program.endDate) return cell;
       var months = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."];
       var from = months[Number(program.startDate.slice(5, 7)) - 1];
