@@ -156,7 +156,7 @@ function priceColumnIndexes(programKey, program) {
 
 function preschoolTuitionRange(program) {
   var prices = [];
-  (program.rows || []).forEach(function (row) {
+  displayTuitionRows(program).forEach(function (row) {
     row.slice(1).forEach(function (cell) {
       var price = parsePrice(cell);
       if (price) prices.push(Number(price));
@@ -176,7 +176,7 @@ function unitText(programKey) {
 function programOffers(programKey, program, page) {
   var indexes = priceColumnIndexes(programKey, program);
   var offers = [];
-  (program.rows || []).forEach(function (row) {
+  displayTuitionRows(program).forEach(function (row) {
     indexes.forEach(function (index) {
       var price = parsePrice(row[index]);
       if (!price) return;
@@ -244,7 +244,7 @@ function renderLlmsTuition(data) {
     if (!program) return;
     lines.push("### " + tuitionHeading(program));
     if (program.note) lines.push("", program.note);
-    (program.rows || []).forEach(function (row) {
+    displayTuitionRows(program).forEach(function (row) {
       lines.push("- " + row.map(function (cell, index) {
         return (program.columns[index] || (index === 0 ? "Option" : "Price")) + ": " + cell;
       }).join("; "));
@@ -271,7 +271,7 @@ function generatedRegion(text, startMarker, endMarker) {
 function verifyPage(file, program) {
   var text = fs.readFileSync(file, "utf8");
   var content = generatedRegion(text, CONTENT_START, CONTENT_END);
-  (program.rows || []).forEach(function (row) {
+  displayTuitionRows(program).forEach(function (row) {
     row.forEach(function (cell) {
       if (content.indexOf(escapeHtml(cell)) === -1) {
         throw new Error(path.basename(file) + " is missing generated tuition value: " + cell);
@@ -296,7 +296,7 @@ function verifyArtifact(root, data) {
 
   var llms = generatedRegion(fs.readFileSync(path.join(root, "llms.txt"), "utf8"), CONTENT_START, CONTENT_END);
   (data.programOrder || []).forEach(function (programKey) {
-    (data.programs[programKey].rows || []).forEach(function (row) {
+    displayTuitionRows(data.programs[programKey]).forEach(function (row) {
       row.forEach(function (cell) {
         if (llms.indexOf(String(cell)) === -1) throw new Error("llms.txt is missing generated tuition value: " + cell);
       });
