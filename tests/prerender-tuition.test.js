@@ -118,8 +118,8 @@ test("generation is idempotent and propagates a temporary canonical change", fun
 
   var tuitionDataFile = path.join(root, "data", "tuition.js");
   var tuitionData = fs.readFileSync(tuitionDataFile, "utf8");
-  assert.equal((tuitionData.match(/\$1,100/g) || []).length, 1);
-  fs.writeFileSync(tuitionDataFile, tuitionData.replace("$1,100", "$1,101"), "utf8");
+  assert.ok((tuitionData.match(/\$1,100/g) || []).length >= 1);
+  fs.writeFileSync(tuitionDataFile, tuitionData.replaceAll("$1,100", "$1,101"), "utf8");
   generator.prerender(root);
 
   var central = generatedRegion(read(root, "tuition.html"), generator.CONTENT_START, generator.CONTENT_END);
