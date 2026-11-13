@@ -70,7 +70,9 @@ test("prerendered pages expose canonical tuition without JavaScript", function (
   assert.match(preschoolSummary, /\$650–\$2,050 per month/);
 
   var saturday = generatedRegion(read(root, "saturday-school.html"), generator.CONTENT_START, generator.CONTENT_END);
-  assert.match(saturday, /Fall 2026 Saturday School tuition/);
+  assert.match(saturday, /Spring 2027 Saturday School tuition/);
+  assert.match(saturday, /Spring 2027 \(Jan\.–Jun\.\)/);
+  assert.doesNotMatch(saturday, /Fall Quarter/);
   assert.match(saturday, /New-student application fee/);
   assert.doesNotMatch(saturday, /Extended care/);
   var saturdayPage = read(root, "saturday-school.html");
