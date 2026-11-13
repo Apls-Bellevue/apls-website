@@ -60,6 +60,19 @@ function tuitionHeading(program) {
   return heading;
 }
 
+function displayTuitionRows(program) {
+  return (program.rows || []).map(function (row) {
+    return row.map(function (cell, index) {
+      if (index !== 0 || !/^(Fall|Spring|Summer|Winter) Quarter(?:\s*\([^)]*\))?$/i.test(String(cell))) return cell;
+      if (!program.term || !program.startDate || !program.endDate) return cell;
+      var months = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."];
+      var from = months[Number(program.startDate.slice(5, 7)) - 1];
+      var to = months[Number(program.endDate.slice(5, 7)) - 1];
+      return from && to ? program.term + " (" + from + "–" + to + ")" : program.term;
+    });
+  });
+}
+
 function renderTable(columns, rows) {
   var lines = [
     '<table class="schedule-table tuition-table">',
@@ -93,7 +106,7 @@ function renderProgram(program, feesHeading, fees) {
   if (program.note) lines.push('<p class="program-tuition-note">' + escapeHtml(program.note) + "</p>");
 
   var hasTable = (program.columns || []).length && (program.rows || []).length;
-  if (hasTable) lines.push(renderTable(program.columns, program.rows));
+  if (hasTable) lines.push(renderTable(program.columns, displayTuitionRows(program)));
   if (fees.length) {
     lines.push("<h2>" + escapeHtml(feesHeading || "Registration & other fees") + "</h2>");
     lines.push(renderFees(fees));
@@ -120,7 +133,7 @@ function renderFullTuition(data) {
     lines.push("<h2>" + escapeHtml(tuitionHeading(program)) + "</h2>");
     if (program.note) lines.push("<p>" + escapeHtml(program.note) + "</p>");
     if ((program.columns || []).length && (program.rows || []).length) {
-      lines.push(renderTable(program.columns, program.rows));
+      lines.push(renderTable(program.columns, displayTuitionRows(program)));
     }
   });
   if ((data.fees || []).length) {
@@ -143,7 +156,7 @@ function priceColumnIndexes(programKey, program) {
 
 function preschoolTuitionRange(program) {
   var prices = [];
-  (program.rows || []).forEach(function (row) {
+  displayTuitionRows(program).forEach(function (row) {
     row.slice(1).forEach(function (cell) {
       var price = parsePrice(cell);
       if (price) prices.push(Number(price));
@@ -163,7 +176,7 @@ function unitText(programKey) {
 function programOffers(programKey, program, page) {
   var indexes = priceColumnIndexes(programKey, program);
   var offers = [];
-  (program.rows || []).forEach(function (row) {
+  displayTuitionRows(program).forEach(function (row) {
     indexes.forEach(function (index) {
       var price = parsePrice(row[index]);
       if (!price) return;
@@ -231,7 +244,7 @@ function renderLlmsTuition(data) {
     if (!program) return;
     lines.push("### " + tuitionHeading(program));
     if (program.note) lines.push("", program.note);
-    (program.rows || []).forEach(function (row) {
+    displayTuitionRows(program).forEach(function (row) {
       lines.push("- " + row.map(function (cell, index) {
         return (program.columns[index] || (index === 0 ? "Option" : "Price")) + ": " + cell;
       }).join("; "));
@@ -258,7 +271,7 @@ function generatedRegion(text, startMarker, endMarker) {
 function verifyPage(file, program) {
   var text = fs.readFileSync(file, "utf8");
   var content = generatedRegion(text, CONTENT_START, CONTENT_END);
-  (program.rows || []).forEach(function (row) {
+  displayTuitionRows(program).forEach(function (row) {
     row.forEach(function (cell) {
       if (content.indexOf(escapeHtml(cell)) === -1) {
         throw new Error(path.basename(file) + " is missing generated tuition value: " + cell);
@@ -283,7 +296,7 @@ function verifyArtifact(root, data) {
 
   var llms = generatedRegion(fs.readFileSync(path.join(root, "llms.txt"), "utf8"), CONTENT_START, CONTENT_END);
   (data.programOrder || []).forEach(function (programKey) {
-    (data.programs[programKey].rows || []).forEach(function (row) {
+    displayTuitionRows(data.programs[programKey]).forEach(function (row) {
       row.forEach(function (cell) {
         if (llms.indexOf(String(cell)) === -1) throw new Error("llms.txt is missing generated tuition value: " + cell);
       });

@@ -16,6 +16,20 @@
     return node;
   }
 
+  // Keep legacy seasonal tuition labels in sync with the CMS term and date range.
+  function displayTuitionRows(program) {
+    return (program.rows || []).map(function (row) {
+      return row.map(function (cell, index) {
+        if (index !== 0 || !/^(Fall|Spring|Summer|Winter) Quarter(?:\s*\([^)]*\))?$/i.test(String(cell))) return cell;
+        if (!program.term || !program.startDate || !program.endDate) return cell;
+        var months = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."];
+        var from = months[Number(program.startDate.slice(5, 7)) - 1];
+        var to = months[Number(program.endDate.slice(5, 7)) - 1];
+        return from && to ? program.term + " (" + from + "–" + to + ")" : program.term;
+      });
+    });
+  }
+
   // Build a tuition table from { columns, rows }.
   function buildTuitionTable(columns, rows) {
     var table = el("table", "schedule-table tuition-table");
@@ -96,7 +110,7 @@
       if (program.heading) root.appendChild(el("h2", null, tuitionHeading(program)));
       if (program.note) root.appendChild(el("p", null, program.note));
       if ((program.columns || []).length && (program.rows || []).length) {
-        root.appendChild(buildTuitionTable(program.columns, program.rows));
+        root.appendChild(buildTuitionTable(program.columns, displayTuitionRows(program)));
       }
     });
 
@@ -121,7 +135,7 @@
       if (program.note) root.appendChild(el("p", "program-tuition-note", program.note));
 
       var hasTable = (program.columns || []).length && (program.rows || []).length;
-      if (hasTable) root.appendChild(buildTuitionTable(program.columns, program.rows));
+      if (hasTable) root.appendChild(buildTuitionTable(program.columns, displayTuitionRows(program)));
 
       var fees = (data.fees || []).filter(function (fee) {
         return (fee.appliesTo || []).indexOf(programKey) !== -1;
@@ -222,6 +236,11 @@
     document.querySelectorAll("[data-program-term]").forEach(function (element) {
       var program = programs[element.getAttribute("data-program-term")];
       if (program && program.term) element.textContent = program.term;
+    });
+
+    document.querySelectorAll("[data-program-season]").forEach(function (element) {
+      var program = programs[element.getAttribute("data-program-season")];
+      if (program && program.term) element.textContent = program.term.split(/\s+/)[0];
     });
 
     document.querySelectorAll("[data-program-term-heading]").forEach(function (element) {

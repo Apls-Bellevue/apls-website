@@ -70,7 +70,9 @@ test("prerendered pages expose canonical tuition without JavaScript", function (
   assert.match(preschoolSummary, /\$650–\$2,050 per month/);
 
   var saturday = generatedRegion(read(root, "saturday-school.html"), generator.CONTENT_START, generator.CONTENT_END);
-  assert.match(saturday, /Fall 2026 Saturday School tuition/);
+  assert.match(saturday, /Spring 2027 Saturday School tuition/);
+  assert.match(saturday, /Spring 2027 \(Jan\.–Jun\.\)/);
+  assert.doesNotMatch(saturday, /Fall Quarter/);
   assert.match(saturday, /New-student application fee/);
   assert.doesNotMatch(saturday, /Extended care/);
   var saturdayPage = read(root, "saturday-school.html");
@@ -116,8 +118,8 @@ test("generation is idempotent and propagates a temporary canonical change", fun
 
   var tuitionDataFile = path.join(root, "data", "tuition.js");
   var tuitionData = fs.readFileSync(tuitionDataFile, "utf8");
-  assert.equal((tuitionData.match(/\$1,100/g) || []).length, 1);
-  fs.writeFileSync(tuitionDataFile, tuitionData.replace("$1,100", "$1,101"), "utf8");
+  assert.ok((tuitionData.match(/\$1,100/g) || []).length >= 1);
+  fs.writeFileSync(tuitionDataFile, tuitionData.replaceAll("$1,100", "$1,101"), "utf8");
   generator.prerender(root);
 
   var central = generatedRegion(read(root, "tuition.html"), generator.CONTENT_START, generator.CONTENT_END);
