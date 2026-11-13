@@ -86,10 +86,10 @@ window.APLS_TUITION = {
       "name": "After-School",
       "term": "Fall 2026",
       "enrollmentStatus": "Open",
-      "applicationUrl": "pdfs/Chinese-Japanese%20MW-W%20afterschool%20classes-Fall%202026_Final.pdf",
+      "applicationUrl": "pdfs/uploads/2026/after-school-monday-wednesday-6132b3e0.pdf",
       "calendarStartDate": "2026-09-09",
-      "startDate": "2026-09-14",
-      "endDate": "2026-12-09",
+      "startDate": "2027-01-06",
+      "endDate": "2027-06-09",
       "schedule": "Mon. & Wed. · 2:00–3:30 or 4:00–5:30 p.m.",
       "format": "90-minute classes; extended care available",
       "careStatus": "available",
@@ -112,58 +112,93 @@ window.APLS_TUITION = {
       "paymentPlans": [
         {
           "mode": "regular-final",
-          "regularAmount": "450",
-          "customAmounts": []
+          "regularAmount": "429",
+          "customAmounts": [
+            "330",
+            "330",
+            "550",
+            "330",
+            "385",
+            "165"
+          ]
         },
         {
           "mode": "regular-final",
-          "regularAmount": "200",
-          "customAmounts": []
+          "regularAmount": "231",
+          "customAmounts": [
+            "220",
+            "165",
+            "275",
+            "165",
+            "220",
+            "110"
+          ]
         }
       ],
       "classDates": [
         [
-          "2026-09-14",
-          "2026-09-16",
-          "2026-09-21",
-          "2026-09-23",
-          "2026-09-28",
-          "2026-09-30",
-          "2026-10-05",
-          "2026-10-07",
-          "2026-10-12",
-          "2026-10-14",
-          "2026-10-19",
-          "2026-10-21",
-          "2026-10-26",
-          "2026-10-28",
-          "2026-11-02",
-          "2026-11-04",
-          "2026-11-09",
-          "2026-11-11",
-          "2026-11-16",
-          "2026-11-18",
-          "2026-11-23",
-          "2026-11-25",
-          "2026-11-30",
-          "2026-12-02",
-          "2026-12-07",
-          "2026-12-09"
+          "2027-01-06",
+          "2027-01-11",
+          "2027-01-13",
+          "2027-01-20",
+          "2027-01-25",
+          "2027-01-27",
+          "2027-02-01",
+          "2027-02-03",
+          "2027-02-08",
+          "2027-02-10",
+          "2027-02-22",
+          "2027-02-24",
+          "2027-03-01",
+          "2027-03-03",
+          "2027-03-08",
+          "2027-03-10",
+          "2027-03-15",
+          "2027-03-17",
+          "2027-03-22",
+          "2027-03-24",
+          "2027-03-29",
+          "2027-03-31",
+          "2027-04-05",
+          "2027-04-07",
+          "2027-04-19",
+          "2027-04-21",
+          "2027-04-26",
+          "2027-04-28",
+          "2027-05-03",
+          "2027-05-05",
+          "2027-05-10",
+          "2027-05-12",
+          "2027-05-17",
+          "2027-05-19",
+          "2027-05-24",
+          "2027-05-26",
+          "2027-06-02",
+          "2027-06-07",
+          "2027-06-09"
         ],
         [
-          "2026-09-16",
-          "2026-09-23",
-          "2026-09-30",
-          "2026-10-07",
-          "2026-10-14",
-          "2026-10-21",
-          "2026-10-28",
-          "2026-11-04",
-          "2026-11-11",
-          "2026-11-18",
-          "2026-11-25",
-          "2026-12-02",
-          "2026-12-09"
+          "2027-01-06",
+          "2027-01-13",
+          "2027-01-20",
+          "2027-01-27",
+          "2027-02-03",
+          "2027-02-10",
+          "2027-02-24",
+          "2027-03-03",
+          "2027-03-10",
+          "2027-03-17",
+          "2027-03-24",
+          "2027-03-31",
+          "2027-04-07",
+          "2027-04-21",
+          "2027-04-28",
+          "2027-05-05",
+          "2027-05-12",
+          "2027-05-19",
+          "2027-05-26",
+          "2027-06-02",
+          "2027-06-09"
         ]
       ],
       "editorNote": "",
@@ -177,13 +212,13 @@ window.APLS_TUITION = {
       "rows": [
         [
           "Monday & Wednesday",
-          "$1,430 (26 classes)",
-          "$450 (Sept.), $450 (Oct.), $450 (Nov.), $80 (Dec.)"
+          "$2,145 (39 classes)",
+          "$429 (Jan.), $429 (Feb.), $429 (Mar.), $429 (Apr.), $429 (May), $0 (June)"
         ],
         [
           "Wednesday only",
-          "$715 (13 classes)",
-          "$200 (Sept.), $200 (Oct.), $200 (Nov.), $115 (Dec.)"
+          "$1,155 (21 classes)",
+          "$231 (Jan.), $231 (Feb.), $231 (Mar.), $231 (Apr.), $231 (May), $0 (June)"
         ]
       ]
     },
@@ -191,9 +226,9 @@ window.APLS_TUITION = {
       "name": "Saturday School",
       "term": "Fall 2026",
       "enrollmentStatus": "Open",
-      "applicationUrl": "pdfs/Sat.%20school%20classes_APLS_Fall%202026_Final.pdf",
-      "startDate": "2026-09-19",
-      "endDate": "2026-12-12",
+      "applicationUrl": "pdfs/uploads/2026/saturday-class-2027-af0ff13d.pdf",
+      "startDate": "2027-01-09",
+      "endDate": "2027-06-12",
       "schedule": " 9:30 a.m. – 11:00 a.m.\n11:15 a.m. – 12:45 p.m : Japanese beginner class",
       "format": "90-minute classes; no extended care",
       "careStatus": "unavailable",
@@ -208,30 +243,45 @@ window.APLS_TUITION = {
       ],
       "paymentPlans": [
         {
-          "mode": "regular-final",
+          "mode": "custom",
           "regularAmount": "220",
-          "customAmounts": []
+          "customAmounts": [
+            "605",
+            "",
+            "",
+            "495",
+            "",
+            "0"
+          ]
         }
       ],
       "classDates": [
         [
-          "2026-09-19",
-          "2026-09-26",
-          "2026-10-03",
-          "2026-10-10",
-          "2026-10-17",
-          "2026-10-24",
-          "2026-10-31",
-          "2026-11-07",
-          "2026-11-14",
-          "2026-11-21",
-          "2026-12-05",
-          "2026-12-12"
+          "2027-01-09",
+          "2027-01-16",
+          "2027-01-23",
+          "2027-01-30",
+          "2027-02-06",
+          "2027-02-13",
+          "2027-02-27",
+          "2027-03-06",
+          "2027-03-13",
+          "2027-03-20",
+          "2027-03-27",
+          "2027-04-03",
+          "2027-04-10",
+          "2027-04-24",
+          "2027-05-01",
+          "2027-05-08",
+          "2027-05-15",
+          "2027-05-22",
+          "2027-06-05",
+          "2027-06-12"
         ]
       ],
       "editorNote": "",
       "heading": "Saturday School tuition",
-      "note": "Fall 2026 tuition is $55 per class. Classes are enrolled by the quarter — single classes are not sold separately. No make-up classes or payment refunds. No extended care is offered.",
+      "note": "Spring 2027 tuition is $55 per class. Classes are enrolled by the quarter — single classes are not sold separately. No make-up classes or payment refunds. No extended care is offered.",
       "columns": [
         "Enrollment option",
         "Total tuition",
@@ -240,8 +290,8 @@ window.APLS_TUITION = {
       "rows": [
         [
           "Fall Quarter (Sept.–Dec.)",
-          "$660 (12 classes)",
-          "$220 (Sept.), $220 (Oct.), $220 (Nov.), $0 (Dec.)"
+          "$1,100 (20 classes)",
+          "$605 (Jan.), $0 (Feb.), $0 (Mar.), $495 (Apr.), $0 (May), $0 (June)"
         ]
       ]
     },
