@@ -103,9 +103,85 @@
         link: { label: "Explore all programs", href: "programs.html" }
       },
       {
+        "id": "preschool-morning-language",
+        "patterns": [
+          "morning language",
+          "morning immersion",
+          "70 percent",
+          "70%",
+          "language immersion",
+          "chinese immersion",
+          "japanese immersion",
+          "morning chinese",
+          "morning japanese",
+          "how does morning language immersion work in preschool"
+        ],
+        "answer": "Children attend separate Chinese or Japanese morning classes. Teachers aim to use the chosen language for 70% or more of language-class instruction; this is a teaching goal, not a percentage of the entire school day.",
+        "link": {
+          "label": "See preschool language learning",
+          "href": "preschool.html#language-learning"
+        }
+      },
+      {
+        "id": "preschool-afternoon-english",
+        "patterns": [
+          "afternoon english",
+          "english instruction",
+          "english class",
+          "combined class",
+          "afternoon curriculum",
+          "weekly subjects",
+          "science class",
+          "math class",
+          "learn english",
+          "taught in english",
+          "are preschool children taught in english in the afternoon"
+        ],
+        "answer": "Yes. Chinese and Japanese preschool groups combine for afternoon instruction in English for children who are not napping. Monday, Tuesday and Thursday: English with Tomiko sensei. Wednesday: science or social studies with Wenjing. Friday: math with Miao.",
+        "link": {
+          "label": "See preschool language learning",
+          "href": "preschool.html#language-learning"
+        }
+      },
+      {
+        "id": "preschool-nap-english",
+        "patterns": [
+          "child nap",
+          "child naps",
+          "nap",
+          "naps",
+          "napping",
+          "nap time",
+          "english exposure",
+          "reading time",
+          "still nap",
+          "will my child have english instruction if they still nap"
+        ],
+        "answer": "Children who nap do not attend the afternoon English curriculum while they are resting. They have English exposure through reading time after outdoor play, around 4:00–4:30 p.m., if they are still at school. Timing is approximate; this reading time is separate from the afternoon classes.",
+        "link": {
+          "label": "See preschool language learning",
+          "href": "preschool.html#language-learning"
+        }
+      },
+      {
+        "id": "preschool-half-day-english",
+        "patterns": [
+          "half day english",
+          "half day learn english",
+          "morning only english",
+          "half day english classes",
+          "does morning half-day preschool include afternoon english classes"
+        ],
+        "answer": "No. Children attending the 9:00 a.m.–12:00 p.m. morning half-day program leave before the combined afternoon English curriculum and late-afternoon reading time. Morning classes focus on Chinese or Japanese immersion. Ask APLS about the language exposure that fits your child’s attendance and nap schedule.",
+        "link": {
+          "label": "See preschool language learning",
+          "href": "preschool.html#language-learning"
+        }
+      },
+      {
         id: "program-preschool",
         patterns: ["preschool", "pre school", "preschool program"],
-        answer: "APLS Preschool offers Chinese or Japanese immersion for children beginning at age 2½, with half-day and full-day options from 2 to 5 days per week.",
+        answer: "APLS Preschool offers morning Chinese or Japanese immersion for ages 2½–6, with half-day and full-day options from 2 to 5 days per week. Afternoon groups combine for instruction in English for children who are not napping. Morning half-day children leave before those classes; children who nap have later English reading time around 4:00–4:30 p.m. if still at school.",
         link: { label: "View the Preschool program", href: "preschool.html" }
       },
       {

@@ -32,7 +32,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=24" />
+  <link rel="stylesheet" href="css/styles.css?v=25" />
 </head>
 <body>
 
@@ -173,16 +173,51 @@
           <tr><td>午前・半日</td><td>9:00am – 12:00pm</td></tr>
           <tr><td>午後・半日</td><td>12:45pm – 3:45pm</td></tr>
           <tr><td>曜日</td><td>月〜金（週2日以上から選択可）</td></tr>
-          <tr><td>言語</td><td>日本語 ・ 中国語 ・ 英語（下記 PreK イングリッシュ参照）</td></tr>
+          <tr><td>言語</td><td>午前：日本語または中国語／午後：英語（下記参照）</td></tr>
           <tr><td>場所</td><td>Asia Pacific Language School</td></tr>
         </tbody>
       </table>
       <p style="color:var(--muted);">※8時以前・3時45分以降の対応も可能です。ご相談ください。<br />
       ※全日の場合、お食事はご家庭でご準備いただくか、スクールランチ（別途申込・有料）をご利用いただけます。スナックは園で提供していますが、アレルギーのあるお子様はご家庭でご準備ください。</p>
 
+      <section class="language-day" id="language-learning" aria-labelledby="language-learning-title" lang="ja">
+        <h3 id="language-learning-title">午前は日本語・中国語、午後は英語で学びます</h3>
+        <p>英語に触れる機会は、登園時間やお昼寝の有無によって異なります。</p>
+        <div class="language-day-grid">
+          <article class="language-day-card">
+            <p class="language-day-label">午前：言語別のクラス</p>
+            <h4>日本語または中国語のイマージョン</h4>
+            <p>午前中は日本語・中国語それぞれのクラスに分かれます。言語の授業では、<strong>指導の7割以上を選択した言語で行うことを目標</strong>に、絵本や歌、遊び、テーマに沿った活動を楽しみます。この割合は一日全体ではなく、言語の授業についての目安です。</p>
+          </article>
+          <article class="language-day-card">
+            <p class="language-day-label">午後：合同クラス</p>
+            <h4>英語で学ぶカリキュラム</h4>
+            <p>午後は日本語・中国語プログラムの園児が一緒になり、英語で学びます。<strong>お昼寝をしないお子様が対象</strong>で、お昼寝とは別に行う授業です。</p>
+          </article>
+        </div>
+        <h4>午後の曜日別カリキュラム（指導言語：英語）</h4>
+        <table class="schedule-table language-week-table">
+          <thead><tr><th scope="col">曜日</th><th scope="col">内容</th><th scope="col">担当</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">月・火・木</th><td>英語</td><td>Tomiko先生</td></tr>
+            <tr><th scope="row">水</th><td>理科または社会</td><td>Wenjing先生</td></tr>
+            <tr><th scope="row">金</th><td>算数</td><td>Miao先生</td></tr>
+          </tbody>
+        </table>
+        <aside class="language-attendance-note">
+          <h4>お昼寝をする場合・午前の半日コースの場合</h4>
+          <p><strong>お昼寝をするお子様：</strong>お昼寝中は午後の英語カリキュラムには参加しません。在園している場合は、外遊び後の<strong>午後4時〜4時半ごろの読み聞かせ</strong>で英語に触れる機会があります。時刻は目安で、この読み聞かせは午後の授業とは別の時間です。</p>
+          <p><strong>午前の半日コース（午前9時〜正午）：</strong>日本語または中国語のイマージョンが中心です。午後の英語授業や夕方の読み聞かせの前に降園します。</p>
+          <p>お子様の登園時間やお昼寝に合わせた言語学習については、<a href="contact.html">お気軽にお問い合わせください</a>。</p>
+        </aside>
+      </section>
+
+      <!-- EDITOR REVIEW: Confirm with Mari whether the morning PreK English ages/days below
+           remain current and how they relate to the Nov 17 afternoon curriculum.
+           Preserve this schedule until Mari clarifies; do not treat it as confirmed chat knowledge. -->
       <!-- PreK English -->
       <h3>PreK イングリッシュ・プリスクール</h3>
-      <p>英語クラスの対象年齢・曜日は下記の通りです。</p>
+      <p class="language-review-note">※以下の午前のPreKイングリッシュの対象年齢・曜日は、現在確認中です。上記の午後の合同カリキュラムとは分けてご覧いただき、最新の実施状況は園にお問い合わせください。</p>
       <ul class="prog-highlights">
         <li><strong>4歳児、または翌年キンダー入学予定のお子様</strong> — 水・木・金曜日（午前）</li>
         <li><strong>3歳児</strong> — 火・木曜日（午前）</li>
@@ -299,7 +334,7 @@
   <script src="js/apls-render.js"></script>
   <script src="js/mobile-nav.js?v=5"></script>
   <script src="data/tuition.js"></script>
-  <script src="data/chat-knowledge.js"></script>
+  <script src="data/chat-knowledge.js?v=20261117-language"></script>
   <script src="js/analytics.js?v=1"></script>
   <script src="js/chatbox.js"></script>
 </body>
