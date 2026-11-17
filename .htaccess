@@ -19,6 +19,9 @@ DirectoryIndex index.html index.php
   RewriteCond %{HTTP_HOST} !^www\.apls\.org$ [NC]
   RewriteRule ^ https://www.apls.org%{REQUEST_URI} [R=301,L]
 
+  # --- Lighthouse Town Info campaign (temporary redirect, staging-safe) ---
+  RewriteRule ^lighthouse/?$ japanese.html?utm_source=lighthouse&utm_medium=referral&utm_campaign=japanese_enrollment_2027&utm_content=town_info [R=302,L,NE]
+
   # --- Old homepage -> new homepage (avoid a duplicate /index.php) ---
   RewriteRule ^index\.php$ / [R=301,L]
 
