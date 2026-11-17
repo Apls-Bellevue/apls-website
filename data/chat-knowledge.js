@@ -145,6 +145,7 @@
       },
       {
         "id": "preschool-nap-english",
+        matchPriority: 5,
         "patterns": [
           "child nap",
           "child naps",
@@ -165,7 +166,10 @@
       },
       {
         "id": "preschool-half-day-english",
+        matchPriority: 5,
         "patterns": [
+          "half day",
+          "morning only",
           "half day english",
           "half day learn english",
           "morning only english",
