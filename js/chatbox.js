@@ -7,6 +7,34 @@
   var pendingTopic = null;
   var lastFocused = null;
 
+  function categoryFor(entry) {
+    var id = entry && entry.id || "";
+    if (/^tuition(?:-|$)/.test(id)) return "tuition";
+    if (/^program(?:s|-)/.test(id)) return "programs";
+    if (id === "languages" || id === "beginners") return "languages";
+    if (id === "ages") return "eligibility";
+    if (["hours", "half-day", "calendar"].indexOf(id) !== -1) return "schedule";
+    if (["lunch", "ratio", "licensed"].indexOf(id) !== -1) return "school_details";
+    if (["enrollment", "tour", "location", "events", "contact"].indexOf(id) !== -1) return id;
+    return "other";
+  }
+
+  function track(eventName, parameters) {
+    var analytics = window.APLS_ANALYTICS;
+    if (!analytics || !analytics.trackEvent) return;
+    parameters = parameters || {};
+    parameters.page_path = window.location.pathname;
+    parameters.page_language = document.documentElement.lang || "en";
+    analytics.trackEvent(eventName, parameters);
+  }
+
+  function trackQuestion(entry, source) {
+    var parameters = { question_category: categoryFor(entry), question_source: source };
+    track("chat_question_submit", parameters);
+    if (source === "suggested") track("chat_suggestion_select", parameters);
+    if (!entry) track("chat_unanswered", parameters);
+  }
+
   function el(tag, className, text) {
     var node = document.createElement(tag);
     if (className) node.className = className;
@@ -171,8 +199,10 @@
         var button = el("button", "chat-choice", choice.label);
         button.type = "button";
         button.addEventListener("click", function () {
+          var entry = findById(choice.target);
           addMessage("user", choice.label);
-          respond(findById(choice.target));
+          trackQuestion(entry, "suggested");
+          respond(entry);
         });
         wrap.appendChild(button);
       });
@@ -202,6 +232,8 @@
     }
 
     function openPanel() {
+      if (!panel.hidden) return;
+      track("chat_open");
       lastFocused = document.activeElement;
       panel.hidden = false;
       syncLauncherVisibility();
@@ -228,7 +260,9 @@
       if (!question) return;
       addMessage("user", question);
       input.value = "";
-      respond(findAnswer(question));
+      var entry = findAnswer(question);
+      trackQuestion(entry, "typed");
+      respond(entry);
     });
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape" && !panel.hidden) closePanel();

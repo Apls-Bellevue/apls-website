@@ -253,6 +253,25 @@ function normalize(value) {
   return JSON.parse(JSON.stringify(value));
 }
 
+test("chat events respect consent and reject raw or unexpected category values", function () {
+  var harness = loadAnalytics();
+  var controller = harness.api.createConsentController({ storage: harness.browserWindow.localStorage, window: harness.browserWindow });
+  assert.equal(controller.trackEvent("chat_open"), false);
+  controller.acceptAnalytics();
+  assert.equal(controller.trackEvent("chat_open"), true);
+  assert.equal(controller.trackEvent("chat_question_submit", { question_category: "tuition", question_source: "typed", question_text: "family@example.com" }), true);
+  assert.equal(controller.trackEvent("chat_suggestion_select", { question_category: "enrollment", question_source: "suggested" }), true);
+  assert.equal(controller.trackEvent("chat_unanswered", { question_category: "family@example.com", question_source: "private text" }), true);
+  controller.disableAnalytics();
+  assert.equal(controller.trackEvent("chat_question_submit", { question_category: "schedule" }), false);
+  assert.deepEqual(normalize(harness.browserWindow.dataLayer.filter(function (call) { return call[0] === "event"; }).map(function (call) { return Array.from(call); })), [
+    ["event", "chat_open", {}],
+    ["event", "chat_question_submit", { question_category: "tuition", question_source: "typed" }],
+    ["event", "chat_suggestion_select", { question_category: "enrollment", question_source: "suggested" }],
+    ["event", "chat_unanswered", {}]
+  ]);
+});
+
 test("offers Accept analytics and Cookie settings while keeping analytics off available in settings", function () {
   var harness = loadAnalytics();
   var controller = harness.api.createConsentController({

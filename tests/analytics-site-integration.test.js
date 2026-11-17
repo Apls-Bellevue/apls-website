@@ -24,7 +24,7 @@ test("every public sitemap page ships the consent-gated analytics controller", f
   assert.ok(pages.includes("privacy.html"), "privacy notice is a public sitemap page");
   pages.forEach(function (page) {
     var html = fs.readFileSync(path.join(repositoryRoot, page), "utf8");
-    assert.match(html, /<script src="js\/analytics\.js\?v=1"><\/script>/, page + " loads analytics consent");
+    assert.match(html, /<script src="js\/analytics\.js\?v=2"><\/script>/, page + " loads analytics consent");
     assert.match(html, /<link rel="stylesheet" href="css\/styles\.css\?v=24" \/>/, page + " loads consent styles");
   });
 });
@@ -47,7 +47,7 @@ test("deployment package contains the privacy notice and analytics controller", 
 
 test("tour page loads analytics before the Cal.com integration registers callbacks", function () {
   var html = fs.readFileSync(path.join(repositoryRoot, "tour.html"), "utf8");
-  var analyticsIndex = html.indexOf('<script src="js/analytics.js?v=1"></script>');
+  var analyticsIndex = html.indexOf('<script src="js/analytics.js?v=2"></script>');
   var bookingIndex = html.indexOf('<script src="js/tour-booking.js?v=3"></script>');
 
   assert.notEqual(analyticsIndex, -1);

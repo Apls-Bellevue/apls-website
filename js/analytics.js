@@ -35,6 +35,9 @@
   var approvedEvents = {
     application_click: true,
     chat_open: true,
+    chat_question_submit: true,
+    chat_suggestion_select: true,
+    chat_unanswered: true,
     contact_click: true,
     generate_lead: true,
     tour_booking_complete: true,
@@ -50,6 +53,8 @@
     page_path: true,
     program: true
   };
+  var chatCategories = ["tuition", "programs", "languages", "eligibility", "schedule", "enrollment", "tour", "school_details", "location", "events", "contact", "other"];
+  var chatSources = ["typed", "suggested"];
 
   function eventForLink(link) {
     var href = String(link.href || "");
@@ -323,9 +328,11 @@
       trackEvent: function (eventName, parameters) {
         var safeParameters = {};
 
-        if (!approvedEvents[eventName] || savedChoice() !== "granted") return false;
+        if (!Object.prototype.hasOwnProperty.call(approvedEvents, eventName) || savedChoice() !== "granted") return false;
         Object.keys(parameters || {}).forEach(function (key) {
-          if (approvedParameters[key]) safeParameters[key] = parameters[key];
+          if (key === "question_category" && chatCategories.indexOf(parameters[key]) !== -1) safeParameters[key] = parameters[key];
+          else if (key === "question_source" && chatSources.indexOf(parameters[key]) !== -1) safeParameters[key] = parameters[key];
+          else if (Object.prototype.hasOwnProperty.call(approvedParameters, key)) safeParameters[key] = parameters[key];
         });
         loadTag();
         browserWindow.gtag("event", eventName, safeParameters);
