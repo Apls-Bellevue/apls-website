@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=24" />
+  <link rel="stylesheet" href="css/styles.css?v=25" />
 
   <!-- ============ Structured data: preschool and childcare ============ -->
   <script type="application/ld+json">
@@ -203,7 +203,7 @@
           <p class="prog-meta"><span class="ages">Ages 2½–6</span> <span class="langs">Chinese or Japanese</span></p>
           <h2>What we offer</h2>
           <ul class="prog-highlights">
-            <li>Full immersion in Chinese <em>or</em> Japanese</li>
+            <li>Morning immersion in Chinese <em>or</em> Japanese</li>
             <li>Full- and half-day programs, with before- and after-school care</li>
             <li>Low child-to-teacher ratios in a safe, nurturing environment</li>
             <li>Native-speaking teachers trained in early childhood education</li>
@@ -217,6 +217,38 @@
       </div>
     </div>
     <div class="container prose story-follow">
+      <section class="language-day" id="language-learning" aria-labelledby="language-learning-title">
+        <h2 id="language-learning-title">Two parts of the day, two ways to learn</h2>
+        <p>Language exposure depends on your child’s attendance and whether they nap. Here is how our preschool day works.</p>
+        <div class="language-day-grid">
+          <article class="language-day-card">
+            <p class="language-day-label">Morning · Separate language groups</p>
+            <h3>Chinese or Japanese immersion</h3>
+            <p>Children learn in their chosen Chinese or Japanese class. Teachers aim to use the target language for <strong>70% or more during language class</strong>, through stories, songs, play and themed activities.</p>
+          </article>
+          <article class="language-day-card">
+            <p class="language-day-label">Afternoon · Combined group</p>
+            <h3>Learning in English</h3>
+            <p>Children from the Chinese and Japanese programs come together for an English-based curriculum. <strong>These classes are for children who are not napping</strong>; nap time runs separately.</p>
+          </article>
+        </div>
+        <h3>Afternoon weekly subjects · taught in English</h3>
+        <table class="schedule-table language-week-table">
+          <thead><tr><th scope="col">Days</th><th scope="col">Subject</th><th scope="col">Teacher</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Monday, Tuesday &amp; Thursday</th><td>English</td><td>Tomiko sensei</td></tr>
+            <tr><th scope="row">Wednesday</th><td>Science or social studies</td><td>Wenjing</td></tr>
+            <tr><th scope="row">Friday</th><td>Math</td><td>Miao</td></tr>
+          </tbody>
+        </table>
+        <aside class="language-attendance-note" aria-labelledby="language-attendance-title">
+          <h3 id="language-attendance-title">What if my child naps or attends mornings only?</h3>
+          <p><strong>Children who nap:</strong> do not attend the afternoon English curriculum while resting. English reading time follows outdoor play around <strong>4:00–4:30 p.m.</strong> for children still at school. This approximate reading time is separate from the afternoon classes.</p>
+          <p><strong>Morning half-day (9:00 a.m.–12:00 p.m.):</strong> focuses on Chinese or Japanese immersion and ends before afternoon English classes and late-afternoon reading time.</p>
+          <p><a href="contact.html">Talk with APLS</a> about your child’s attendance, nap needs and language exposure.</p>
+        </aside>
+      </section>
+
       <h2>What the day looks like</h2>
       <p>Our play-based curriculum follows school-readiness guidelines, helping children acquire a second language through literature, music, arts &amp; crafts, and themed study. Three kinds of learning are woven through each day:</p>
       <ul class="prog-highlights">
@@ -293,19 +325,13 @@
       </table>
 
       <h3>Lunch, rest, and afternoon class</h3>
+      <p>Nap time and the combined English-based afternoon class are separate options running at the same time. Children who nap do not attend the afternoon curriculum while resting; see the weekly subjects above.</p>
       <table class="schedule-table preschool-sample-table">
-        <thead>
-          <tr><th>Time</th><th>Activity</th></tr>
-        </thead>
+        <thead><tr><th scope="col">Time</th><th scope="col">Activity</th></tr></thead>
         <tbody>
           <tr><td>12:05–12:45 p.m.</td><td>Lunch and clean-up</td></tr>
-          <tr><td>12:50–2:50 p.m.</td><td>Nap and quiet time for full-day students</td></tr>
-          <tr><td>12:45–1:00 p.m.</td><td>Afternoon free-choice play</td></tr>
-          <tr><td>1:05–1:20 p.m.</td><td>Afternoon circle time</td></tr>
-          <tr><td>1:20–1:40 p.m.</td><td>Language arts</td></tr>
-          <tr><td>1:40–2:00 p.m.</td><td>Math, science, or music</td></tr>
-          <tr><td>2:00–2:30 p.m.</td><td>Language arts</td></tr>
-          <tr><td>2:30–3:00 p.m.</td><td>Project and story time</td></tr>
+          <tr><td>12:50–2:50 p.m.</td><td>Children who nap: nap and quiet time, separate from afternoon classes</td></tr>
+          <tr><td>12:45–3:00 p.m.</td><td>Children who do not nap: free-choice play, circle time, the combined English-based curriculum, projects and stories</td></tr>
           <tr><td>2:50–3:00 p.m.</td><td>Transition time for children waking from nap</td></tr>
         </tbody>
       </table>
@@ -389,8 +415,8 @@
   <script src="data/tuition.js"></script>
   <script src="js/apls-render.js"></script>
   <script src="js/mobile-nav.js?v=5"></script>
-  <script src="data/chat-knowledge.js"></script>
+  <script src="data/chat-knowledge.js?v=20261117-language"></script>
   <script src="js/analytics.js?v=1"></script>
-  <script src="js/chatbox.js"></script>
+  <script src="js/chatbox.js?v=20261117-language"></script>
 </body>
 </html>

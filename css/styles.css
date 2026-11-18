@@ -1032,3 +1032,23 @@ body.open-house-popup-open { overflow: hidden; }
   .tour-actions { flex-direction: column; align-items: stretch; }
   .tour-actions .btn { width: 100%; text-align: center; }
 }
+
+/* Preschool language learning: static editorial content beside CMS-owned tuition. */
+.language-day { margin: 0 0 2.5rem; scroll-margin-top: 100px; }
+.language-day-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 1.3rem 0; }
+.language-day-card { min-width: 0; padding: 1.3rem; border: 1px solid #e7ddc9; border-top: 4px solid var(--green); border-radius: var(--radius); background: var(--white); }
+.language-day-card:nth-child(2) { border-top-color: var(--gold); }
+.language-day-card h3, .language-day-card h4 { margin: .3rem 0 .7rem; color: var(--navy); font-size: 1.2rem; }
+.language-day-card p:last-child { margin-bottom: 0; }
+.language-day-label { margin: 0; color: var(--muted); font-size: .85rem; font-weight: 800; }
+.language-week-table { table-layout: fixed; }
+.language-week-table th, .language-week-table td { overflow-wrap: anywhere; }
+.language-week-table tbody th { color: var(--navy); }
+.language-attendance-note, .language-review-note { padding: 1.2rem; border-left: 4px solid var(--gold); border-radius: 0 var(--radius) var(--radius) 0; background: var(--light); }
+.language-attendance-note h3, .language-attendance-note h4 { margin-top: 0; font-size: 1.2rem; }
+.language-attendance-note p:last-child { margin-bottom: 0; }
+@media (max-width: 560px) {
+  .language-day-grid { grid-template-columns: 1fr; }
+  .language-week-table { font-size: .88rem; }
+  .language-week-table th, .language-week-table td { padding: .55rem .4rem; }
+}

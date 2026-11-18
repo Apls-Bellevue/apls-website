@@ -68,6 +68,8 @@
     knowledge.entries.forEach(function (entry) {
       (entry.patterns || []).forEach(function (pattern) {
         var score = scorePattern(question, pattern);
+        // Attendance-specific answers must outrank generic English-class wording.
+        if (score >= 10) score += entry.matchPriority || 0;
         if (score > bestScore) {
           best = entry;
           bestScore = score;
